@@ -1,0 +1,44 @@
+﻿<Window x:Class="EScooter.CustomerMock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EScooter.CustomerMock"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800">
+    <DockPanel LastChildFill="True" Margin="10">
+        <Label Content="Customers management" FontSize="20" DockPanel.Dock="Top" />
+        <Grid Margin="0,5,0,0" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                Content="CustomerID"
+                Grid.Row="0"
+                Grid.Column="0"/>
+            <TextBox
+                x:Name="_txtCustomerId"
+                Grid.Row="0"
+                Grid.Column="1"/>
+        </Grid>
+        <Button
+            Margin="0,5,0,0"
+            x:Name="_btnCreate"
+            Content="Create"
+            DockPanel.Dock="Top" Click="CreateClicked"/>
+        <Button
+            Margin="0,5,0,0"
+            x:Name="_btnCreateRandom"
+            Content="Create with random ID"
+            DockPanel.Dock="Top" Click="CreateRandomClicked"/>
+        <Button
+            Margin="0,5,0,0"
+            x:Name="_btnRemove"
+            Content="Delete"
+            DockPanel.Dock="Top" Click="DeleteClicked"/>
+        <TextBox
+            x:Name="_txtLog"
+            Margin="0,5,0,0" IsReadOnly="True"/>
+    </DockPanel>
+</Window>

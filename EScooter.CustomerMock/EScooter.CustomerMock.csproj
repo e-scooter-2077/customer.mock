@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UserSecretsId>4a6c4d70-6491-4b4c-a677-346b509660ef</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyDesk.CleanArchitecture.Infrastructure" Version="0.7.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <RootFolder>..</RootFolder>
+  </PropertyGroup>
+
+</Project>
