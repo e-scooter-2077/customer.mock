@@ -16,14 +16,12 @@ namespace EScooter.CustomerMock
     /// <summary>
     /// An event emitted when a scooter is registered to the system.
     /// </summary>
-    public record CustomerCreated(Guid Id)
-        : IExternalEvent;
+    public record CustomerCreated(Guid Id) : ExternalEvent;
 
     /// <summary>
     /// An event emitted when a scooter is deleted from the system.
     /// </summary>
-    public record CustomerDeleted(Guid Id)
-        : IExternalEvent;
+    public record CustomerDeleted(Guid Id) : ExternalEvent;
 
     /// <summary>
     /// The main window of the application.
@@ -45,12 +43,7 @@ namespace EScooter.CustomerMock
                 .Build();
 
             var connectionString = config.GetValue<string>("AzureServiceBusSettings:ConnectionString");
-            var settings = new AzureServiceBusSettings
-            {
-                BasePath = "dev",
-                ConnectionString = connectionString,
-                TopicName = "service-events"
-            };
+            var settings = AzureServiceBusSenderDescriptor.Topic("development/service-events");
             var client = new ServiceBusClient(connectionString);
             var eventBusPublisher = new AzureServiceBusPublisher(client, settings);
             var serializerSettings = new JsonSerializerSettings
@@ -85,7 +78,7 @@ namespace EScooter.CustomerMock
             _txtLog.Text += "\n" + formattedMessage;
         }
 
-        private async Task Publish(IExternalEvent ev)
+        private async Task Publish(ExternalEvent ev)
         {
             try
             {
